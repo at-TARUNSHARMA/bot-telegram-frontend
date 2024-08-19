@@ -1,0 +1,29 @@
+import React from 'react';
+import { GoogleLogin } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
+
+function Login() {
+  const navigate = useNavigate();
+
+  const handleLoginSuccess = (response) => {
+    console.log(response);
+    // Handle successful login, such as storing tokens or redirecting
+    navigate('/dashboard');
+  };
+
+  const handleLoginFailure = (error) => {
+    console.error('Login Failed:', error);
+  };
+
+  return (
+    <div>
+      <h1>Login</h1>
+      <GoogleLogin
+        onSuccess={handleLoginSuccess}
+        onError={handleLoginFailure}
+      />
+    </div>
+  );
+}
+
+export default Login;
